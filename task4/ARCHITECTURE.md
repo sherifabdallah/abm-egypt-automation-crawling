@@ -12,13 +12,13 @@ The diagram (`architecture_diagram.png`) illustrates a production-grade distribu
 - Multiple clients (web UI, API consumers, cron scheduler, webhooks) submit crawl/automation jobs via HTTPS.
 - An **API Gateway / Load Balancer** (nginx / AWS ALB) handles TLS termination, rate-limiting, and authentication before routing requests inward.
 
-### 2. Message Queue — RabbitMQ Cluster
+### 2. Message Queue - RabbitMQ Cluster
 - All incoming jobs are published to a **RabbitMQ cluster** (primary + mirrored nodes).
 - Separate queues segment workloads:
-  - `crawl_queue` — raw crawl tasks
-  - `scrape_queue` — structured scraping tasks
-  - `retry_queue` — failed jobs awaiting re-attempt
-  - `dead_letter_queue` — permanently failed jobs for investigation
+  - `crawl_queue` - raw crawl tasks
+  - `scrape_queue` - structured scraping tasks
+  - `retry_queue` - failed jobs awaiting re-attempt
+  - `dead_letter_queue` - permanently failed jobs for investigation
 - Topic and direct exchanges allow fine-grained routing.
 
 ### 3. Worker Pool (Horizontal Scaling)
@@ -30,9 +30,9 @@ The diagram (`architecture_diagram.png`) illustrates a production-grade distribu
 ### 4. Data Layer
 | Component | Role |
 |---|---|
-| PostgreSQL Primary | Write master — job metadata, results, audit log |
-| PostgreSQL Replica | Read replica — analytics queries, reporting |
-| Redis | Hot cache — deduplication bloom filter, session tokens |
+| PostgreSQL Primary | Write master - job metadata, results, audit log |
+| PostgreSQL Replica | Read replica - analytics queries, reporting |
+| Redis | Hot cache - deduplication bloom filter, session tokens |
 | Object Store (S3/MinIO) | Raw HTML, screenshots, downloaded assets |
 
 Replication uses streaming WAL (Patroni-managed failover).
@@ -43,7 +43,7 @@ Replication uses streaming WAL (Patroni-managed failover).
 | Prometheus + Grafana | System health dashboards, queue depth, worker throughput |
 | Alertmanager + PagerDuty | Threshold-based alerts routed to on-call engineers |
 | ELK Stack (Elasticsearch, Logstash, Kibana) | Centralised error logging, full-text search over logs |
-| Jaeger / Zipkin | Distributed tracing — trace a single job across all services |
+| Jaeger / Zipkin | Distributed tracing - trace a single job across all services |
 | Datadog APM (optional) | Real-time current-load profiling and anomaly detection |
 
 All workers and services emit structured JSON logs to Logstash and expose `/metrics` to Prometheus.
@@ -66,8 +66,8 @@ All workers and services emit structured JSON logs to Logstash and expose `/metr
 
 ## Key design decisions
 
-1. **Decoupled via RabbitMQ** — producers and consumers scale independently without code changes.
-2. **Stateless workers** — any worker can pick up any task; no sticky sessions required.
-3. **Read replica** — offloads analytics from the write path, keeping write latency low.
-4. **Separate dead-letter queue** — failed jobs are never silently dropped; they are inspectable and replayable.
-5. **Observability as a first-class concern** — health, load, and errors are monitored at every layer with alerting and tracing.
+1. **Decoupled via RabbitMQ** - producers and consumers scale independently without code changes.
+2. **Stateless workers** - any worker can pick up any task; no sticky sessions required.
+3. **Read replica** - offloads analytics from the write path, keeping write latency low.
+4. **Separate dead-letter queue** - failed jobs are never silently dropped; they are inspectable and replayable.
+5. **Observability as a first-class concern** - health, load, and errors are monitored at every layer with alerting and tracing.
