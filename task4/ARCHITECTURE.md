@@ -1,4 +1,4 @@
-# Task 4 — System Architecture
+# Task 4 - System Architecture
 
 ## Overview
 
