@@ -68,9 +68,9 @@ python task1_turnstile_bypass.py headed
 ```
 
 ### Output
-- `results_headless_True.json` — attempt details + tokens (headless mode)
-- `results_headless_False.json` — attempt details + tokens (headed mode)
-- `videos/` — screen recordings per attempt (headed mode)
+- `results_headless_True.json` - attempt details + tokens (headless mode)
+- `results_headless_False.json` - attempt details + tokens (headed mode)
+- `videos/` - screen recordings per attempt (headed mode)
 
 ---
 
@@ -102,8 +102,8 @@ python task2_network_intercept.py
 ```
 
 ### Output
-- `task2_results.json` — captured Turnstile details + injection result
-- `videos/` — screen recording showing the widget never loads but form submits successfully
+- `task2_results.json` - captured Turnstile details + injection result
+- `videos/` - screen recording showing the widget never loads but form submits successfully
 
 ---
 
@@ -127,9 +127,9 @@ python task3_dom_scraping.py
 ```
 
 ### Output
-- `allimages.json` — every image on the page (src, tag, base64)
-- `visible_images_only.json` — only in-viewport visible images (src, tag, base64, rendered dimensions)
-- `visible_text.txt` — visible human-readable text, one entry per line
+- `allimages.json` - every image on the page (src, tag, base64)
+- `visible_images_only.json` - only in-viewport visible images (src, tag, base64, rendered dimensions)
+- `visible_text.txt` - visible human-readable text, one entry per line
 
 ---
 
@@ -145,7 +145,7 @@ See [`task4/ARCHITECTURE.md`](task4/ARCHITECTURE.md) for the full layer-by-layer
 |---|---|
 | API Gateway | nginx / AWS ALB |
 | Message Queue | RabbitMQ Cluster (mirrored) |
-| Workers | Python Playwright/httpx — auto-scaled on Kubernetes |
+| Workers | Python Playwright/httpx - auto-scaled on Kubernetes |
 | Database | PostgreSQL (primary + replica) + Redis + S3/MinIO |
 | Monitoring | Prometheus, Grafana, Alertmanager, ELK, Jaeger |
 | Failover | Patroni DB failover, RabbitMQ mirror promotion, DLQ + retry |
@@ -166,5 +166,5 @@ This project was developed with assistance from Claude (Anthropic). Key prompts 
 
 1. *"Write a Python Playwright script that bypasses Cloudflare Turnstile using stealth techniques, runs 10 attempts, tracks success rate, captures the token, and saves results to JSON."*
 2. *"Write a Playwright network interception script that blocks all Cloudflare Turnstile requests before they load, captures sitekey/pageaction/cdata from blocked URLs and page HTML, then injects a token into the hidden input and submits the form."*
-3. *"Write a Playwright DOM scraping script that extracts: (a) all images from src, data-src, srcset, and CSS backgrounds; (b) only images visible to a human using getBoundingClientRect; (c) visible text nodes — all saved to JSON/txt files with base64 encoding."*
+3. *"Write a Playwright DOM scraping script that extracts: (a) all images from src, data-src, srcset, and CSS backgrounds; (b) only images visible to a human using getBoundingClientRect; (c) visible text nodes - all saved to JSON/txt files with base64 encoding."*
 4. *"Create a matplotlib architecture diagram for a distributed web crawling system with RabbitMQ, horizontally-scaled workers, PostgreSQL with replica, Redis, S3, Prometheus/Grafana/ELK monitoring, and failover mechanisms."*
