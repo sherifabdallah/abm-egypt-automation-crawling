@@ -160,11 +160,3 @@ python task4_architecture_diagram.py
 
 ---
 
-## AI/LLM Prompts Used
-
-This project was developed with assistance from Claude (Anthropic). Key prompts included:
-
-1. *"Write a Python Playwright script that bypasses Cloudflare Turnstile using stealth techniques, runs 10 attempts, tracks success rate, captures the token, and saves results to JSON."*
-2. *"Write a Playwright network interception script that blocks all Cloudflare Turnstile requests before they load, captures sitekey/pageaction/cdata from blocked URLs and page HTML, then injects a token into the hidden input and submits the form."*
-3. *"Write a Playwright DOM scraping script that extracts: (a) all images from src, data-src, srcset, and CSS backgrounds; (b) only images visible to a human using getBoundingClientRect; (c) visible text nodes - all saved to JSON/txt files with base64 encoding."*
-4. *"Create a matplotlib architecture diagram for a distributed web crawling system with RabbitMQ, horizontally-scaled workers, PostgreSQL with replica, Redis, S3, Prometheus/Grafana/ELK monitoring, and failover mechanisms."*
