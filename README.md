@@ -1,4 +1,4 @@
-# ABM Egypt — Python Developer Assessment (Automation & Crawling)
+# ABM Egypt - Python Developer Assessment (Automation & Crawling)
 
 ## Project Structure
 
@@ -41,7 +41,7 @@ playwright install chromium
 
 ---
 
-## Task 1 — Automation: Cloudflare Turnstile Bypass
+## Task 1 - Automation: Cloudflare Turnstile Bypass
 
 **Goal:** Use Playwright (headless + headed) to automatically solve the Cloudflare Turnstile CAPTCHA on `https://cd.captchaaiplus.com/turnstile.html`, submit the form, and print the token. Run 10 attempts; achieve ≥ 60% success rate.
 
@@ -74,7 +74,7 @@ python task1_turnstile_bypass.py headed
 
 ---
 
-## Task 2 — Network Interception & Token Injection
+## Task 2 - Network Interception & Token Injection
 
 **Goal:** Open the Turnstile page, immediately block the Turnstile widget from loading, capture its configuration (sitekey, pageaction, cdata, pagedata), inject a valid token from Task 1, submit, and receive "Success! Verified".
 
@@ -107,7 +107,7 @@ python task2_network_intercept.py
 
 ---
 
-## Task 3 — DOM Scraping
+## Task 3 - DOM Scraping
 
 **Goal:** Scrape (1) all images as base64, (2) only visible images as base64, and (3) visible text instructions from the target page.
 
@@ -133,7 +133,7 @@ python task3_dom_scraping.py
 
 ---
 
-## Task 4 — System Architecture Diagram
+## Task 4 - System Architecture Diagram
 
 **Goal:** Design a comprehensive architecture for a distributed automation/crawling system.
 
