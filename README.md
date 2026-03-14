@@ -158,5 +158,3 @@ python task4_architecture_diagram.py
 # Outputs: architecture_diagram.png, architecture_diagram.svg
 ```
 
----
-
